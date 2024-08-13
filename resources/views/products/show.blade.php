@@ -1,9 +1,20 @@
 @extends('layout.main_template')
 @section('content')
-    <h2>Detalles del Producto:{{$product->nameProduct}}</h2>
-    <br>
-    <h3>Cantidad: {{$product->stock}}</h3>
-    <h3>Precio:{{$product->unit_price}}</h3>
-    <h3>Imagen:<img src="/image/products/{{$product->image}}" width="300" alt="Dulces.jpeg"></h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Cantidad</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Imagen</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"></th>
+      <td>{{$product->stock}}</td>
+      <td>{{$product->unit_price}}</td>
+      <td><img src="/image/products/{{$product->image}}" width="300" alt="Dulces.jpeg"></td>
+    </tr>
 
     @endsection

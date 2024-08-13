@@ -1,12 +1,30 @@
 @extends('layout.main_template')
 @section('content')
-    <h2>Nombre del Cliente:{{$client->name}}</h2>
-    <br>
-    <h3>Apellido Paterno:{{$client->last_name}}</h3>
-    <h3>Apellido Materno: {{$client->s_lastname}}</h3>
-    <h3>Email: {{$client->email}}</h3>
-    <h3>Telefono:{{$client->phone}}</h3>
-    <h3>Estado: {{$client->state}}</h3>
-    <h3>Municipio: {{$client->town}}</h3>
+
+<table  class="table table-sm">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre del Cliente</th>
+        <th scope="col">Apellido Paterno</th>
+        <th scope="col">Apellido Materno</th>
+        <th scope="col">Email</th>
+        <th scope="col">Telefono</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Municipio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row"></th>
+        <td>{{$client->name}}</td>
+        <td>{{$client->last_name}}</td>
+        <td>{{$client->s_lastname}}</td>
+        <td>{{$client->email}}</td>
+        <td>{{$client->phone}}</td>
+        <td>{{$client->state}}</td>
+        <td>{{$client->town}}</td>
+
+      </tr>
 
     @endsection

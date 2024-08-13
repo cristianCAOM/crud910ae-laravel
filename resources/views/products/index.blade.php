@@ -3,13 +3,15 @@
 
     <h2>Pagina Producto</h2>
     <br>
-    <button class="btn btn-success"><a href="{{route('products.create')}}">Registrar Producto</a></button>
+    {{-- <button type="button" class="btn btn-success" href="{{route('products.create')}}"> RP</button> --}}
+    <a href="{{route('products.create')}}" class="btn btn-success">Registrar Producto</a></button>
     <br>
 
 
 
     <table  class="table table-striped table-hover">
         <thead>
+            <th>ID Producto</th>
             <th>Nombre Producto</th>
             <th>Cantidad</th>
             <th>Precio Unitario</th>
@@ -23,6 +25,7 @@
         <tbody>
             @foreach ($products as $p)
             <tr>
+                <td>{{$p->id}}</td>
                 <td>{{$p->nameProduct}}</td>
                 <td>{{$p->stock}}</td>
                 <td>{{$p->unit_price}}</td>
@@ -31,16 +34,16 @@
 
 
                     <td>
-                        <button type="button" class="btn btn-outline-info"> <a href="{{route('products.show', $p)}}">Mostrar</a></button>
+                        <a href="{{route('products.show', $p)}}"class="btn btn-info">Mostrar</a></button>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-outline-dark"><a href="{{route('products.edit', $p)}}">Editar</a></button>
+                        <a href="{{route('products.edit', $p)}}" class="btn btn-warning">Editar</a></>
                     </td>
                     <td>
                         <form action="{{route('products.destroy', $p)}}" method="POST">
                             @method("DELETE")
                             @csrf
-                            <button type="submit" class="btn btn-outline-danger">Eliminar</button>
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
                            </form>
 
                     </td>

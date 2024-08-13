@@ -12,7 +12,8 @@ class SaleController extends Controller
      */
     public function index()
     {
-        echo view ('sales.index');
+        $sales = Sale::get();
+        echo view('sales.index', compact('sales'));
     }
 
     /**
@@ -20,7 +21,7 @@ class SaleController extends Controller
      */
     public function create()
     {
-        //
+        echo view('sales.create');
     }
 
     /**
@@ -28,7 +29,9 @@ class SaleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except('_token');
+        Sale::create($data);
+        return to_route('sales.index')->with('status','Venta Registrada');
     }
 
     /**
@@ -36,7 +39,7 @@ class SaleController extends Controller
      */
     public function show(Sale $sale)
     {
-        //
+        return view('sales.show', compact('sale'));
     }
 
     /**
@@ -44,7 +47,7 @@ class SaleController extends Controller
      */
     public function edit(Sale $sale)
     {
-        //
+        echo view('sales.edit', compact('sale'));
     }
 
     /**
@@ -52,7 +55,17 @@ class SaleController extends Controller
      */
     public function update(Request $request, Sale $sale)
     {
-        //
+        // Validar que los ids proporcionados existen en las tablas correspondientes
+    $validatedData = $request->validate([
+        'id_client' => 'required|exists:clients,id',
+        'id_product' => 'required|exists:products,id',
+        // Añade validaciones adicionales según sea necesario
+    ]);
+
+    // Actualizar la venta con los datos validados
+    $sale->update($validatedData);
+
+    return to_route('sales.index')->with('status', 'Venta Actualizada');
     }
 
     /**
@@ -60,6 +73,7 @@ class SaleController extends Controller
      */
     public function destroy(Sale $sale)
     {
-        //
+        $sale->delete();
+        return to_route('sales.index')->with('status','Venta Eliminada');
     }
 }

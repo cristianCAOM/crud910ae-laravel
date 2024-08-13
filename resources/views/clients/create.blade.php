@@ -38,7 +38,7 @@
     <br>
     <form action="{{route('clients.store')}}" method="POST">
         @csrf
-        	<label for="">Nombre del Cliente</label>
+        	<label for="">Cliente</label>
             <input type="text" name="name" required>
             <label for="">Apellido Paterno</label>
             <input type="text" name="last_name" required>

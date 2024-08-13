@@ -58,6 +58,7 @@
                 <option value="">Selecionar...</option>
                 @foreach ($brands as $brand => $id)
                 <option value="{{$id}}">{{$brand}}</option>
+            <br>
 
                 @endforeach
             </select>
